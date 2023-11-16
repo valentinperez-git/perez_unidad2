@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="number" id="operando1" placeholder="Operando 1">
+    <input type="number" id="operando2" placeholder="Operando 2">
+
+    <br>
+
+    <button onclick="sumar()">Suma</button>
+    <button onclick="restar()">Resta</button>
+    <button onclick="multiplicar()">Multiplicación</button>
+    <button onclick="dividir()">División</button>
+
+    <br>
+
+    <p>Resultado: <span id="resultado"></span></p>
+
+    <script>
+        function sumar() {
+            calcular('suma');
+        }
+
+        function restar() {
+            calcular('resta');
+        }
+
+        function multiplicar() {
+            calcular('multiplicacion');
+        }
+
+        function dividir() {
+            calcular('division');
+        }
+
+        function calcular(operacion) {
+            let operando1 = parseFloat(document.getElementById('operando1').value);
+            let operando2 = parseFloat(document.getElementById('operando2').value);
+            let resultadoElement = document.getElementById('resultado');
+
+            if (!isNaN(operando1) && !isNaN(operando2)) {
+                switch (operacion) {
+                    case 'suma':
+                        resultadoElement.textContent = operando1 + operando2;
+                        break;
+                    case 'resta':
+                        resultadoElement.textContent = operando1 - operando2;
+                        break;
+                    case 'multiplicacion':
+                        resultadoElement.textContent = operando1 * operando2;
+                        break;
+                    case 'division':
+                        resultadoElement.textContent = operando1 / operando2;
+                        break;
+                    default:
+                        resultadoElement.textContent = 'Error';
+                        break;
+                }
+            } else {
+                resultadoElement.textContent = 'Ingrese números válidos';
+            }
+        }
+    </script>
+
+</body>
+</html>
